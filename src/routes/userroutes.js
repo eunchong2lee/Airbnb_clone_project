@@ -15,8 +15,8 @@ const { Users } = require("../models/");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 // passport config
-// var passport = require('passport');
-// var LocalStrategy = require('passport-local');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
 
 userRouter.post("/signUp", async (req, res) => {
@@ -29,6 +29,8 @@ userRouter.post("/signUp", async (req, res) => {
 
         const [emailValue, email] = useremail.split('@');
         const regExpPassword = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{4,20}$/;
+
+        if(!email) return res.status(400).json({success: false, errorMessage: "이메일 형식이 아닙니다."});
 
         if (password !== checkpassword) return res.status(400).json({ success: false, errorMessage: "비밀번호가 비밀번호 확인란과 동일하지 않습니다." });
 
@@ -44,7 +46,7 @@ userRouter.post("/signUp", async (req, res) => {
         const salt = await Bcrypt.genSalt(Number(process.env.SALTKEY));
         const hashPassword = await Bcrypt.hash(password, salt);
 
-        const user = new Users({ useremail, password: hashPassword,nickname, refreshToken: null, });
+        const user = new Users({ useremail, password: hashPassword, nickname, refreshToken: null, });
         await user.save();
 
         return res.status(200).json({ success: true, message: "회원가입 했습니다.", user });
