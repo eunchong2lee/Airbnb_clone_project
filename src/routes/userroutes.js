@@ -1,8 +1,9 @@
 // dotenv
 const dotenv = require('dotenv');
-dotenv.config()
-const jwtSecret = process.env.JWT-ACCESSKEY;
-const refreshjwtSecret = process.env.JWT-REFRESHKEY;
+dotenv.config();
+
+const jwtSecret = process.env.JWTACCESSKEY;
+const refreshjwtSecret = process.env.JWTREFRESHKEY;
 
 const express = require("express")
 const userRouter = express.Router();
@@ -30,7 +31,7 @@ userRouter.post("/user", async (req, res) => {
         //hash 비밀번호
         // 비밀 번호  hash / bcrypt
 
-        const salt = await Bcrypt.genSalt(Number(process.env.SALT-KEY));
+        const salt = await Bcrypt.genSalt(Number(process.env.SALTKEY));
         const hashPassword = await Bcrypt.hash(password, salt);
 
         const user = new Users({ useremail, password: hashPassword,nickname, refreshToken: null, });
@@ -90,4 +91,4 @@ userRouter.get('/user/me', authMiddleware, async (req, res) => {
 
 
 
-module.exports = userRouter;    
+module.exports = {userRouter};    

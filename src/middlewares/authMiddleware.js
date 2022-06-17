@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config()
-const jwtSecret = process.env.SECRETKEY;
-const refreshjwtSecret = process.env.RESECRETKEY;
+const jwtSecret = process.env.JWTACCESSKEY;
+const refreshjwtSecret = process.env.JWTREFRESHKEY;
 const jwt = require("jsonwebtoken")
 
 const { Users } = require("../models/")
