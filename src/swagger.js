@@ -6,7 +6,7 @@ const doc = {
   info: {
     title: "AirBnB Clone Project",
     description:
-        "당신의 방을 자랑하세요",
+        "여행은 살아보는거야",
   },
   host: `${process.env.SWAGGER_PORT}/api`,
   schemes: ["http"],
