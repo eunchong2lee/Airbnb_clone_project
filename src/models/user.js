@@ -8,6 +8,7 @@ const userschema = new Schema({
         required: [true, 'email을 입력하세요'],
         unique: true,
         trim: true,
+        match: [/^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/, '이메일 형식이어야합니다.']
         
     },
     nickname: {

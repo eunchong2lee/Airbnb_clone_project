@@ -20,15 +20,15 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 
 userRouter.post("/signUp", async (req, res) => {
-    // #swagger.tags = ["Auth"]
+    // #swagger.tags = ["User"]
     // #swagger.summary = "회원가입 페이지"
     // #swagger.description = "회원가입 페이지"
     try {
         // 미들웨어에서 유저 정보 넣기 ( user_name, userId, password, checkPassword )
-        const { useremail, password, checkPassword, nickname} = req.body;
+        const { useremail, password, checkpassword, nickname} = req.body;
         const checkUser = await Users.findOne().or([{ useremail }, { nickname }]);
 
-        if (password !== checkPassword) return res.status(400).json({ success: false, errorMessage: "비밀번호가 비밀번호 확인란과 동일하지 않습니다." });
+        if (password !== checkpassword) return res.status(400).json({ success: false, errorMessage: "비밀번호가 비밀번호 확인란과 동일하지 않습니다." });
         if (checkUser) return res.status(400).json({ success: false, errorMessage: "이미 존재하는 아이디 또는 닉네임입니다." });
 
         //hash 비밀번호
@@ -54,7 +54,7 @@ userRouter.post("/signUp", async (req, res) => {
 })
 
 userRouter.post("/signIn", async (req, res) => {
-    // #swagger.tags = ["Auth"]
+    // #swagger.tags = ["User"]
     // #swagger.summary = "로그인 페이지"
     // #swagger.description = "로그인 페이지"
     try {
@@ -71,11 +71,11 @@ userRouter.post("/signIn", async (req, res) => {
 
         // return res.status(400).json({ success: false, errorMessage: " 아이디 또는 비밀번호가 틀렸습니다." });
         // 1시간 짜리 Token 만들기
-        const accesstoken = jwt.sign({ useremail }, jwtSecret, { expiresIn: '15s' });
+        const accessToken = jwt.sign({ useremail }, jwtSecret, { expiresIn: '15s' });
         const refreshToken = jwt.sign({}, refreshjwtSecret , {expiresIn: '7d'});
         const user = await Users.findOneAndUpdate({useremail},{refreshToken}, {new:true});
         //https://www.npmjs.com/package/jsonwebtoken 
-        console.log(accesstoken);
+        console.log(accessToken);
         // dotenv 적용
 
         res.status(200).json({ Message: "로그인 되었습니다.", accessToken, user });
@@ -89,10 +89,21 @@ userRouter.post("/signIn", async (req, res) => {
 
 // 로컬 변수 데이터 들어오는 지 확인
 userRouter.get('/user', authMiddleware, async (req, res) => {
-    const { localuser } = res.locals;
-    res.json({
+    // #swagger.tags = ["User"]
+    // #swagger.summary = "로컬변수 확인 페이지"
+    // #swagger.description = "로컬변수 확인 페이지"
+    try{
+      const { localuser } = res.locals;
+      res.status(200).json({
+        succees:true,
+        message: "로컬변수를 불러왔습니다.",
         localuser,
-    });
+      });
+      
+    }catch(err){
+      res.status(400).json({errorMessage: err.message});
+    }
+
 });
 
 
