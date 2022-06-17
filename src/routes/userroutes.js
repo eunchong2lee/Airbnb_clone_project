@@ -71,6 +71,7 @@ userRouter.post("/signIn", async (req, res) => {
         const validPassword = await Bcrypt.compare(password, checkUser.password);
 
         if (!checkUser) return res.status(400).json({ success: false, errorMessage: "아이디 또는 비밀번호가 틀렸습니다." });
+        
         if (!validPassword) return res.status(400).json({ success: false, errorMessage: " 아이디 또는 비밀번호가 틀렸습니다." });
 
 
