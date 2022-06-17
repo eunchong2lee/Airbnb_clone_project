@@ -19,7 +19,10 @@ const authMiddleware = require("../middlewares/authMiddleware");
 // var LocalStrategy = require('passport-local');
 
 
-userRouter.post("/user", async (req, res) => {
+userRouter.post("/signUp", async (req, res) => {
+    // #swagger.tags = ["Auth"]
+    // #swagger.summary = "회원가입 페이지"
+    // #swagger.description = "회원가입 페이지"
     try {
         // 미들웨어에서 유저 정보 넣기 ( user_name, userId, password, checkPassword )
         const { useremail, password, checkPassword, nickname} = req.body;
@@ -50,7 +53,10 @@ userRouter.post("/user", async (req, res) => {
 
 })
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/signIn", async (req, res) => {
+    // #swagger.tags = ["Auth"]
+    // #swagger.summary = "로그인 페이지"
+    // #swagger.description = "로그인 페이지"
     try {
         const { useremail, password } = req.body;
 
@@ -82,7 +88,7 @@ userRouter.post("/login", async (req, res) => {
 });
 
 // 로컬 변수 데이터 들어오는 지 확인
-userRouter.get('/user/me', authMiddleware, async (req, res) => {
+userRouter.get('/user', authMiddleware, async (req, res) => {
     const { localuser } = res.locals;
     res.json({
         localuser,
