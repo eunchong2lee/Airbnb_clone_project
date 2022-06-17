@@ -9,18 +9,13 @@ const userschema = new Schema({
         unique: true,
         trim: true,
         match: [/^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/, '이메일 형식이어야합니다.']
-        
     },
     nickname: {
         type: String,
-        required: true,
+        required: [true, '닉네임을 입력하세요'],
         unique: true,
         trim: true,
-        required: [true, 'nickname을 입력하세요'],
-        minlength: [3, '3글자 이상이어야 합니다.'],
-        maxlength: [18, '18글자 이하여야 합니다.'],
-        match: [/^[A-Za-z0-9]+$/, '특수문자가 포함되면 안됩니다.']
-
+        match: [/^(?=.*[a-z0-9가-힣A-Z])[a-z0-9가-힣]{3,18}$/, '닉네임은 영문,숫자,한글로 된 3~18자입니다.']
     },
     password: {
         type: String,
