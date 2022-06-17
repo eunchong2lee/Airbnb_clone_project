@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "AirBnB Clone Project",
-    "description": "당신의 방을 자랑하세요",
+    "description": "여행은 살아보는거야",
     "version": "1.0.0"
   },
   "host": "localhost:3000/api",
