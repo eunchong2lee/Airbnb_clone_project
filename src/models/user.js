@@ -29,6 +29,9 @@ const userschema = new Schema({
     refreshToken : {
         type : String,
     }
+},
+{
+  timestamps: true
 });
 
 const Users = model('user', userschema);

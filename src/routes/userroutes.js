@@ -72,7 +72,7 @@ userRouter.post("/login", async (req, res) => {
         console.log(accesstoken);
         // dotenv 적용
 
-        res.status(200).json({ Message: "로그인 되었습니다.", accesstoken, user });
+        res.status(200).json({ Message: "로그인 되었습니다.", accessToken, user });
 
     } catch (err) {
         return res.status(400).send({ errorMeesage: err.message }) 
