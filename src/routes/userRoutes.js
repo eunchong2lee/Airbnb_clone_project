@@ -19,7 +19,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
 
-userRouter.post("/signUp", async (req, res) => {
+userRouter.post("/register", async (req, res) => {
     // #swagger.tags = ["User"]
     // #swagger.summary = "회원가입 페이지"
     // #swagger.description = "회원가입 페이지"
@@ -36,11 +36,11 @@ userRouter.post("/signUp", async (req, res) => {
 
         if (checkUser) return res.status(400).json({ success: false, errorMessage: "이미 존재하는 아이디 또는 닉네임입니다." });
 
-        if (!regExpPassword.test(password)) return res.status(400).send({ sucess: false, errorMessage: "비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용 가능 4-20자",});
+        if (!regExpPassword.test(password)) return res.status(400).send({ success: false, errorMessage: "비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용 가능 4-20자",});
 
-        if (password.match(nickname)) return res.status(400).send({ sucess: false, errorMessage: "비밀번호에 닉네임을 포함할 수 없습니다.", });
+        if (password.match(nickname)) return res.status(400).send({ success: false, errorMessage: "비밀번호에 닉네임을 포함할 수 없습니다.", });
         
-        if (password.match(emailValue)) return res.status(400).send({sucess: false,errorMessage: "비밀번호에 이메일을 포함할 수 없습니다.",});
+        if (password.match(emailValue)) return res.status(400).send({success: false,errorMessage: "비밀번호에 이메일을 포함할 수 없습니다.",});
        
 
         const salt = await Bcrypt.genSalt(Number(process.env.SALTKEY));
@@ -62,7 +62,7 @@ userRouter.post("/signUp", async (req, res) => {
 
 })
 
-userRouter.post("/signIn", async (req, res) => {
+userRouter.post("/auth", async (req, res) => {
     // #swagger.tags = ["User"]
     // #swagger.summary = "로그인 페이지"
     // #swagger.description = "로그인 페이지"
@@ -85,7 +85,7 @@ userRouter.post("/signIn", async (req, res) => {
         res.status(200).json({ Message: "로그인 되었습니다.", accessToken, user });
 
     } catch (err) {
-        return res.status(400).send({ errorMeesage: err.message }) 
+        return res.status(400).send({ errorMessage: err.message }) 
     }
 
 
