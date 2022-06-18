@@ -81,7 +81,7 @@ userRouter.post("/auth", async (req, res) => {
 
         const user = await Users.findOneAndUpdate({useremail},{refreshToken}, {new:true});
 
-        res.status(200).json({ Message: "로그인 되었습니다.", accessToken, user });
+        res.status(200).json({ message: "로그인 되었습니다.", accessToken, user });
 
     } catch (err) {
         return res.status(400).send({ errorMessage: err.message }) 
