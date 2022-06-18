@@ -5,13 +5,13 @@
     "description": "여행은 살아보는거야",
     "version": "1.0.0"
   },
-  "host": "3.39.223.175/api",
+  "host": "localhost:3000/api",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/signUp": {
+    "/register": {
       "post": {
         "tags": [
           "User"
@@ -51,7 +51,7 @@
         }
       }
     },
-    "/signIn": {
+    "/auth": {
       "post": {
         "tags": [
           "User"

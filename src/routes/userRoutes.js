@@ -56,7 +56,6 @@ userRouter.post("/register", async (req, res) => {
             .values(err.errors)
             .map((error) => error.message);
         return res.status(400).json({ success: false, errorMessage: errormessage });
-
     }
 
 
