@@ -1,4 +1,5 @@
 module.exports = {
   ...require('./userRoutes'),
-  ...require('./commentRoutes')
+  ...require('./commentRoutes'),
+  ...require('./postsRoutes')
 }
