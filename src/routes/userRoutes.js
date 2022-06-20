@@ -55,7 +55,7 @@ userRouter.post("/register", async (req, res) => {
         const [errormessage] = Object
             .values(err.errors)
             .map((error) => error.message);
-        return res.status(400).json({ success: false, errorMessage: errormessage });
+        return res.status(400).json({ success: false, errorMessage: errormessage});
     }
 
 
@@ -67,6 +67,8 @@ userRouter.post("/auth", async (req, res) => {
     // #swagger.description = "로그인 페이지"
     try {
         const { useremail, password } = req.body;
+
+        if(!(useremail && password)) return res.status(400).json({success: false, errorMessage: "email 또는 비밀번호를 입력하세요."});
 
         const checkUser = await Users.findOne({ useremail });
         const validPassword = await Bcrypt.compare(password, checkUser.password);
