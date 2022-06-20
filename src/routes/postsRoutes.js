@@ -27,7 +27,7 @@ postRouter.get('/posts/:postId', async (req, res)=>{
   // #swagger.description = "게시글 상세 조회 페이지"
 try {
   const { postId } = req.params
-  const posts = await posts.find({ postId })
+  const posts = await Posts.find({ postId })
   return res.status(200).json({
     success:true,
     message: "게시글을 불러왔습니다.",
