@@ -20,11 +20,14 @@ const postSchema = new mongoose.Schema({
     date : {
         type: String,
     },
-    image1 :{
+    image :{
       type: String,
     },
     star: {
       type: String,
+    },
+    price: {
+        type: String,
     }
 },
 {
