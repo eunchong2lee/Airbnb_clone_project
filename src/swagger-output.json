@@ -130,6 +130,31 @@
         }
       }
     },
+    "/posts/{postId}": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "게시글 상세 조회 페이지",
+        "description": "게시글 상세 조회 페이지",
+        "parameters": [
+          {
+            "name": "postId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
     "/post/{postId}/comment": {
       "get": {
         "tags": [
