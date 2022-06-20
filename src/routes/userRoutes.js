@@ -15,8 +15,8 @@ const { Users } = require("../models");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 // passport config
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local');
 
 
 userRouter.post("/register", async (req, res) => {

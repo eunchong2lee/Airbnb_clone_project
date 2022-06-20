@@ -111,6 +111,24 @@
           }
         }
       }
+    },
+    "/posts": {
+      "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "메인 페이지",
+        "description": "메인 페이지",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   }
 }
