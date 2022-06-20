@@ -1,4 +1,5 @@
 module.exports = {
   ...require('./user'),
-  ...require('./comment')
+  ...require('./comment'),
+  ...require('./post')
 }
