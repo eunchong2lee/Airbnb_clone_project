@@ -5,13 +5,10 @@ const postSchema = new mongoose.Schema({
     postId: {
         type: Number,
     },
-    name: {
+    title: {
         type: String
     },
     location: {
-        type: String,
-    },
-    url: {
         type: String,
     },
     length :{
@@ -21,13 +18,25 @@ const postSchema = new mongoose.Schema({
         type: String,
     },
     image :{
-      type: String,
+      type: [String],
     },
     star: {
       type: String,
     },
-    price: {
+    price : {
         type: String,
+    },
+    category:{
+        type: String,
+    },
+    url : {
+        type: String,
+    },
+    details :{
+        hosting: {type: String},
+        information: {type: String},
+        money: {type: String},
+        description: {type: String},
     }
 },
 {
