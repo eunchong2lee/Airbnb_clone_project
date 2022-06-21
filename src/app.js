@@ -36,7 +36,7 @@ const server = async () => {
 
     app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile, {explorer: true}));
  
-
+    
     app.get('/', function (req, res) {
       res.send('연결완료');
     })

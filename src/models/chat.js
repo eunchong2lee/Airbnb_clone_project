@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const chatSchema = new Schema({
-    user: {
+    nickname: {
         type: String,
         required: true,
     },

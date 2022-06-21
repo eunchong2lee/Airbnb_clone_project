@@ -7,12 +7,12 @@ module.exports = (http) => {
             methods: ["GET", "POST"],
         },
     });
-    try{
+    
+    try {
         io.on('connection', (socket) => {
             const req = socket.request;
             const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
             console.log('새로운 클라이언트가 연결됐습니다.', ip, socket.id, req.ip);
-        
             socket.on('disconnect', () => {
                 console.log('클라이언트가 연결해제됐습니다.', ip, socket.id, req.ip);
                 clearInterval(socket.interval);
@@ -27,8 +27,8 @@ module.exports = (http) => {
             });
         });
 
-    }catch (error) {
-        return res.status(400).send({ errorMeesage: error.message }) 
+    } catch (error) {
+        return res.status(400).send({ errorMeesage: error.message })
     }
 
 }
