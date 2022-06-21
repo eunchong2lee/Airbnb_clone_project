@@ -12,6 +12,7 @@ const {userRouter,commentRouter,postRouter} = require('./routes')
 
 const swaggerUi =require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
+const io = require('./socket');
 
 console.log('env', process.env.NODE_ENV);
 
@@ -46,6 +47,7 @@ const server = async () => {
 }
 
 server();
+io(http);
 
 
 // app.listen(process.env.PORT, () => {
