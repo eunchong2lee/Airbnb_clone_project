@@ -5,7 +5,7 @@ const authMiddleware = require("../middlewares/authMiddleware")
 
 
 // 댓글 조회
-commentRouter.get('/posts/:postId/comments', authMiddleware, async (req, res)=> {
+commentRouter.get('/posts/:postId/comments', async (req, res)=> {
     // #swagger.tags = ["Comment"]
     // #swagger.summary = "코멘트 조회 페이지"
     // #swagger.description = "코멘트 조회 페이지"
