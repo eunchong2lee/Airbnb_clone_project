@@ -10,7 +10,7 @@ commentRouter.get('/posts/:postId/comments', async (req, res)=> {
     // #swagger.summary = "코멘트 조회 페이지"
     // #swagger.description = "코멘트 조회 페이지"
     try {
-        const { postId } = req.params
+        const { postId } = req.params;
         const comments = await Comments.find({ postId })
         res.status(200).json({
             success: true,
