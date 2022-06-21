@@ -4,10 +4,10 @@ const autoIncrement = require("mongoose-sequence")(mongoose);
 const commentSchema = new mongoose.Schema({
     postId: {
         type: Number,
-        required: true
     },
     commentId: {
-        type: Number
+        type: Number,
+        unique: true,
     },
     nickname: {
         type: String,
