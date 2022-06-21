@@ -155,7 +155,7 @@
         }
       }
     },
-    "/post/{postId}/comment": {
+    "/posts/{postId}/comments": {
       "get": {
         "tags": [
           "Comment"
@@ -231,7 +231,7 @@
         }
       }
     },
-    "/post/{postId}/comment/{commentId}": {
+    "/posts/{postId}/comments/{commentId}": {
       "put": {
         "tags": [
           "Comment"
