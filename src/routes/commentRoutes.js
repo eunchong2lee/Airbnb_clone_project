@@ -12,6 +12,8 @@ commentRouter.get('/post/:postId/comment', authMiddleware, async (req, res)=> {
     try {
         const { postId } = req.params
         const comments = await Comments.find({ postId })
+
+        if (!comments) {return res.status(400).send({success: false, errorMeesage: "게시글에 댓글이 없습니다."})}
         res.status(200).json({
             success: true,
             comments: comments,
@@ -34,12 +36,7 @@ commentRouter.post('/post/:postId/comment', authMiddleware, async (req, res)=>{
         const { postId } = req.params
         const { comment } = req.body
 
-        if (!comment) {
-            return res.status(400).send({
-                success: false,
-                errorMessage: "댓글을 작성해주세요"
-            })
-        }
+        if (!comment) {return res.status(400).send({success: false, errorMessage: "댓글을 작성해주세요"})}
 
         const createComment = await Comments.create({
             postId: Number(postId),
@@ -69,11 +66,8 @@ commentRouter.put('/post/:postId/comment/:commentId', authMiddleware, async (req
 
         const existComment = await Comments.findOne({ commentId })
 
-        if (!user.nickname === existComment.nickname) {
-            return res.status(400).send({
-                errorMessage: "본인만 수정 가능합니다."
-            })
-        }
+        if (!existComment) {return res.status(400).send({success: false, errorMeesage: "수정 가능한 댓글이 없습니다."})}
+        if (!user.nickname === existComment.nickname) {return res.status(400).send({errorMessage: "본인만 수정 가능합니다."})}
 
         const changeComment = await Comments.findOneAndUpdate({ commentId },{comment },{new : true})
         res.status(200).json({
@@ -98,14 +92,10 @@ commentRouter.delete('/post/:postId/comment/:commentId', authMiddleware, async (
         const user = req.locals
         const deleteComment = await Comments.findOne({ commentId })
 
-        if (!user.name === deleteComment.name) {
-            return res.status(400).send({
-                success: false,
-                errorMessage: "본인만 삭제 가능합니다."
-            })
-        } 
+        if (!deleteComment) {return res.status(400).send({success: false, errorMeesage: "삭제 가능한 댓글이 없습니다."})}
+        if (!user.name === deleteComment.name) {return res.status(400).send({success: false, errorMessage: "본인만 삭제 가능합니다." })} 
+
         await Comments.deleteOne({ commentId })
-        
         res.status(200).send({
             success: true,
             message: "댓글을 삭제했습니다."
