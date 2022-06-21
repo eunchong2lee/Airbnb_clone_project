@@ -53,7 +53,7 @@ module.exports = (req, res, next) => {
                         finduser: finduser,
                         new_token: myNewToken
                     }
-                    res.locals.user = temp;
+                    res.locals.user = finduser;
                     next();
                 }
             });
@@ -93,13 +93,13 @@ function verifyToken(Token){
         return jwt.verify(Token, jwtSecret);
 
     }catch (error) {
-        return res.stauts(401).json({errorMessage: error.message});
+        return  error.message;
     }
 }
 function verifyrefreshToken(refreshToken){
     try{
         return jwt.verify(refreshToken, refreshjwtSecret);
     }catch (error) {
-      return res.stauts(401).json({errorMessage: error.message});
-    }
+      return error.message
+    };
 }

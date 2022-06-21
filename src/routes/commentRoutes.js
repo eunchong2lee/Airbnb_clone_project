@@ -30,7 +30,7 @@ commentRouter.post('/posts/:postId/comments', authMiddleware, async (req, res)=>
     // #swagger.summary = "코멘트 작성 페이지"
     // #swagger.description = "코멘트 작성 페이지"
     try {
-        const { user } = req.locals
+        const { user } = res.locals
         const { postId } = req.params
         const { comment } = req.body
 

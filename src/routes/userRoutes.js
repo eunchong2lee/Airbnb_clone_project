@@ -78,7 +78,7 @@ userRouter.post("/auth", async (req, res) => {
         if (!validPassword) return res.status(400).json({ success: false, errorMessage: " 아이디 또는 비밀번호가 틀렸습니다." });
 
 
-        const accessToken = jwt.sign({ useremail }, jwtSecret, { expiresIn: '15m' });
+        const accessToken = jwt.sign({ useremail }, jwtSecret, { expiresIn: '2h' });
         const refreshToken = jwt.sign({}, refreshjwtSecret , {expiresIn: '7d'});
 
         const user = await Users.findOneAndUpdate({useremail},{refreshToken}, {new:true});
