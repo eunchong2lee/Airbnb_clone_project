@@ -1,5 +1,6 @@
 module.exports = {
   ...require('./userRoutes'),
   ...require('./commentRoutes'),
-  ...require('./postsRoutes')
+  ...require('./postsRoutes'),
+  ...require('./chatRoutes')
 }

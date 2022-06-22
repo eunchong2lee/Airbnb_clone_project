@@ -28,7 +28,7 @@ module.exports = (http) => {
         });
 
     } catch (error) {
-        return res.status(400).send({ errorMeesage: error.message })
+        return res.status(400).send({ errorMeesage: error.message });
     }
 
 }

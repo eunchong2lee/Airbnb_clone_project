@@ -7,7 +7,10 @@ const chatSchema = new Schema({
         type: String,
         required: true,
     },
-    chat: String,
+    chat: {
+      type: String,
+      required: true,
+    },
 },
 {
   timestamps: true
