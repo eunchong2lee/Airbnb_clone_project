@@ -95,7 +95,7 @@ commentRouter.delete('/posts/:postId/comments/:commentId', authMiddleware, async
     // #swagger.description = "코멘트 삭제 페이지"
     try {
         const { commentId } = req.params
-        const user = req.locals
+        const { user } = req.locals
         const deleteComment = await Comments.findOne({ commentId })
 
         if (!user.nickname === deleteComment.nickname) {
