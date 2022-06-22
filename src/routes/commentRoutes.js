@@ -98,7 +98,7 @@ commentRouter.delete('/posts/:postId/comments/:commentId', authMiddleware, async
         const user = req.locals
         const deleteComment = await Comments.findOne({ commentId })
 
-        if (!user.name === deleteComment.name) {
+        if (!user.nickname === deleteComment.nickname) {
             return res.status(400).send({
                 success: false,
                 errorMessage: "본인만 삭제 가능합니다."
