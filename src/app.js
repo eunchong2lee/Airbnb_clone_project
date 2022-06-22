@@ -8,10 +8,11 @@ const Http = require('http');
 const mongoose = require("mongoose");
 const http = Http.createServer(app);
 
-const {userRouter,commentRouter,postRouter} = require('./routes')
+const { userRouter, commentRouter, postRouter, chatRouter } = require('./routes')
 
-const swaggerUi =require("swagger-ui-express");
+const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger-output");
+const io = require('./socket');
 
 console.log('env', process.env.NODE_ENV);
 
@@ -21,7 +22,7 @@ const requestMiddleware = ((req, res, next) => {
 });
 const server = async () => {
   try {
-    if(process.env.NODE_ENV !== 'test'){
+    if (process.env.NODE_ENV !== 'test') {
       await mongoose.connect(process.env.NODE_MONGOOSE, { ignoreUndefined: true });
     }
 
@@ -31,10 +32,10 @@ const server = async () => {
 
     app.use(express.urlencoded({ extended: false }));
 
-    app.use("/api", [userRouter,commentRouter,postRouter]);
+    app.use("/api", [userRouter, commentRouter, postRouter, chatRouter]);
 
-    app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile, {explorer: true}));
- 
+    app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile, { explorer: true }));
+
 
     app.get('/', function (req, res) {
       res.send('연결완료');
@@ -46,6 +47,7 @@ const server = async () => {
 }
 
 server();
+io(http);
 
 
 // app.listen(process.env.PORT, () => {
