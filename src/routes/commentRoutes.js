@@ -2,16 +2,17 @@ const express = require("express")
 const commentRouter = express.Router()
 const{ Comments, Users} = require("../models/")
 const authMiddleware = require("../middlewares/authMiddleware")
+const moment = require('moment')
 
 
 // 댓글 조회
-commentRouter.get('/post/:postId/comment', authMiddleware, async (req, res)=> {
+commentRouter.get('/posts/:postId/comment', authMiddleware, async (req, res)=> {
     // #swagger.tags = ["Comment"]
     // #swagger.summary = "코멘트 조회 페이지"
     // #swagger.description = "코멘트 조회 페이지"
     try {
         const { postId } = req.params
-        const comments = await Comments.find({ postId })
+        const comments = await Comments.find({ postId }).sort(-1)
 
         if (!comments) {return res.status(400).send({success: false, errorMeesage: "게시글에 댓글이 없습니다."})}
         res.status(200).json({
@@ -27,7 +28,7 @@ commentRouter.get('/post/:postId/comment', authMiddleware, async (req, res)=> {
 })
 
 // 댓글 작성
-commentRouter.post('/post/:postId/comment', authMiddleware, async (req, res)=>{
+commentRouter.post('/posts/:postId/comment', authMiddleware, async (req, res)=>{
     // #swagger.tags = ["Comment"]
     // #swagger.summary = "코멘트 작성 페이지"
     // #swagger.description = "코멘트 작성 페이지"
@@ -35,13 +36,15 @@ commentRouter.post('/post/:postId/comment', authMiddleware, async (req, res)=>{
         const { user } = req.locals
         const { postId } = req.params
         const { comment } = req.body
-
+        const date = moment().add('9','h').format('YYYY-MM-DD HH:mm:ss')
         if (!comment) {return res.status(400).send({success: false, errorMessage: "댓글을 작성해주세요"})}
 
         const createComment = await Comments.create({
             postId: Number(postId),
+            useremail: user.email,
             nickname: user.nickname,
-            comment: comment
+            comment: comment,
+            date: date.split(' ')[0]
         })
         res.status(201).json({
             success: true,
@@ -55,7 +58,7 @@ commentRouter.post('/post/:postId/comment', authMiddleware, async (req, res)=>{
 })
 
 // 댓글 수정
-commentRouter.put('/post/:postId/comment/:commentId', authMiddleware, async (req, res)=> {
+commentRouter.put('/posts/:postId/comment/:commentId', authMiddleware, async (req, res)=> {
     // #swagger.tags = ["Comment"]
     // #swagger.summary = "코멘트 수정 페이지"
     // #swagger.description = "코멘트 수정 페이지"
@@ -83,7 +86,7 @@ commentRouter.put('/post/:postId/comment/:commentId', authMiddleware, async (req
 
 
 // 댓글 삭제
-commentRouter.delete('/post/:postId/comment/:commentId', authMiddleware, async (req, res)=> {
+commentRouter.delete('/posts/:postId/comment/:commentId', authMiddleware, async (req, res)=> {
     // #swagger.tags = ["Comment"]
     // #swagger.summary = "코멘트 삭제 페이지"
     // #swagger.description = "코멘트 삭제 페이지"

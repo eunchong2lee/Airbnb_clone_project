@@ -8,6 +8,7 @@ postRouter.get('/posts', async (req, res)=>{
       // #swagger.tags = ["Post"]
     // #swagger.summary = "게시글 조회 페이지"
     // #swagger.description = "게시글 조회 페이지"
+    console.log(1)
   try {
     const posts = await Posts.find();
     return res.status(200).json({
