@@ -7,7 +7,10 @@ const authMiddleware = require("../middlewares/authMiddleware");
 //채팅 조회
 chatRouter.get('/chats', async (req, res) => {
     try {
-        const chat = await Chat.find();
+        const date = new Date(Date.now() - 60 * 60 * 1000);
+        console.log(date);
+        const chatList = { timestamps: { $gt: date } };
+        const chat = await Chat.find(chatList);
 
         res.status(200).json({ success: true, message: "메세지를 불러왔습니다.", chat });
     
