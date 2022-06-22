@@ -75,7 +75,7 @@ commentRouter.put('/posts/:postId/comments/:commentId', authMiddleware, async (r
             })
         }
 
-        const changeComment = await Comments.findOneAndUpdate({ commentId },{comment },{new : true})
+        const changeComment = await Comments.findOneAndUpdate({ commentId },{ $set: { comment } },{new : true})
         res.status(200).json({
             success: true,
             message: "댓글을 수정했습니다.",
