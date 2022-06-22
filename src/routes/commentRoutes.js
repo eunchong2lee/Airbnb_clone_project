@@ -64,12 +64,12 @@ commentRouter.put('/posts/:postId/comments/:commentId', authMiddleware, async (r
     // #swagger.description = "코멘트 수정 페이지"
     try {
         const { postId, commentId } = req.params
-        const { user } = req.locals
+        const { nickname } = req.locals.user
         const comment = req.body
 
         const existComment = await Comments.findOne({ commentId })
 
-        if (!user.nickname === existComment.nickname) {
+        if (!nickname === existComment.nickname) {
             return res.status(400).send({
                 errorMessage: "본인만 수정 가능합니다."
             })
@@ -95,10 +95,10 @@ commentRouter.delete('/posts/:postId/comments/:commentId', authMiddleware, async
     // #swagger.description = "코멘트 삭제 페이지"
     try {
         const { commentId } = req.params
-        const { user } = req.locals
+        const { nickname } = req.locals.user
         const deleteComment = await Comments.findOne({ commentId })
 
-        if (!user.nickname === deleteComment.nickname) {
+        if (!nickname === deleteComment.nickname) {
             return res.status(400).send({
                 success: false,
                 errorMessage: "본인만 삭제 가능합니다."
