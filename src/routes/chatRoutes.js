@@ -9,39 +9,26 @@ chatRouter.get('/chats', async (req, res) => {
     try {
         const chat = await Chat.find();
 
-        res.status(200).json({
-            success: true,
-            message: "메세지를 불러왔습니다.",
-            chat,
-
-        });
+        res.status(200).json({ success: true, message: "메세지를 불러왔습니다.", chat });
+    
     } catch (error) {
-        return res.status(400).send({ errorMeesage: error.message });
+        return res.status(500).send({ errorMeesage: error.message });
     }
-
 });
 
 
 // 채팅 생성
 chatRouter.post('/chats', authMiddleware, async (req, res) => {
     try{
-        const { nickname } = req.locals.user;
+        const { nickname } = res.locals.user;
         const { chat } = req.body;
         const checkUser = await Users.findOne({ nickname });
 
-        if(!checkUser) {
-            return res.status(400).json({success: false, errorMessage: "로그인 후 사용하세요"});
-        };
-        if(!chat){
-            return res.status(400).json({success: false, errorMessage: "메세지를 입력하세요 사용하세요"});
-        }
+        if(!checkUser) { return res.status(400).json({ success: false, errorMessage: "로그인 후 사용하세요" }) };
+        if(!chat){ return res.status(400).json({ success: false, errorMessage: "메세지를 입력하세요 사용하세요" }) };
 
-        const createCaht = await Chat.create({ nickname, chat });
+        const createCaht = await Chat.create({ nickname, chat:{ text: chat} });
         
-        if(!checkUser) {
-            return res.status(400).json({ success: false, errorMeesage: '로그인 후 사용하세요.' });
-        }
-    
         res.status(200).json({ success: true, message: "메세지 전달완료", createCaht });
 
     } catch (error) {
