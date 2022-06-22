@@ -65,7 +65,7 @@ commentRouter.put('/posts/:postId/comments/:commentId', authMiddleware, async (r
     try {
         const { postId, commentId } = req.params
         const { nickname } = res.locals.user
-        const comment = req.body
+        const { comment } = req.body
 
         const existComment = await Comments.findOne({ commentId })
 
@@ -83,7 +83,7 @@ commentRouter.put('/posts/:postId/comments/:commentId', authMiddleware, async (r
         })
         
     } catch (error) {
-        return res.status(400).send({ errorMeesage: error.message }) 
+        return res.status(500).send({ errorMeesage: error.message }) 
     }
 })
 
