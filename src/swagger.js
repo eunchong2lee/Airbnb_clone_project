@@ -12,11 +12,11 @@ const doc = {
   schemes: ["http"],
 };
 
-const outputFile = "src/swagger-output.json";
+const outputFile = "./swagger-output.json";
 const endpointsFiles = [
-  "src/routes/userRoutes.js",
-  "src/routes/postsRoutes.js",
-  "src/routes/commentRoutes.js"
+  "./routes/userRoutes.js",
+  "./routes/postsRoutes.js",
+  "./routes/commentRoutes.js"
   
 ];
 
