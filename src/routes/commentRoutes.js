@@ -64,7 +64,7 @@ commentRouter.put('/posts/:postId/comments/:commentId', authMiddleware, async (r
     // #swagger.description = "코멘트 수정 페이지"
     try {
         const { postId, commentId } = req.params
-        const { nickname } = req.locals.user
+        const { nickname } = res.locals.user
         const comment = req.body
 
         const existComment = await Comments.findOne({ commentId })
@@ -95,7 +95,7 @@ commentRouter.delete('/posts/:postId/comments/:commentId', authMiddleware, async
     // #swagger.description = "코멘트 삭제 페이지"
     try {
         const { commentId } = req.params
-        const { nickname } = req.locals.user
+        const { nickname } = res.locals.user
         const deleteComment = await Comments.findOne({ commentId })
 
         if (!nickname === deleteComment.nickname) {
