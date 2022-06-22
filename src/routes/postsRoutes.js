@@ -1,9 +1,8 @@
 const express = require("express");
-const qs = require("querystring");
-
 const postRouter = express.Router();
 
 const { Posts } = require('../models/post');
+
 
 
 postRouter.get('/posts', async (req, res) => {
@@ -31,14 +30,10 @@ postRouter.get('/posts/:postId', async (req, res) => {
   try {
     const { postId } = req.params
     const posts = await Posts.find({ postId })
-    return res.status(200).json({
-      success: true,
-      message: "게시글을 불러왔습니다.",
-      posts
-    });
+    return res.status(200).json({ success: true, message: "게시글을 불러왔습니다.", posts });
 
   } catch (error) {
-    return res.status(400).send({ errorMeesage: error.message })
+    return res.status(500).send({ errorMeesage: error.message })
   }
 })
 

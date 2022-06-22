@@ -9,6 +9,9 @@ const commentSchema = new mongoose.Schema({
         type: Number,
         unique: true,
     },
+    useremail: {
+        type: String,
+    },
     nickname: {
         type: String,
         required: true,
@@ -16,6 +19,9 @@ const commentSchema = new mongoose.Schema({
     comment: {
         type: String,
         required: true
+    },
+    date: {
+        type: String
     }
 },
 {
