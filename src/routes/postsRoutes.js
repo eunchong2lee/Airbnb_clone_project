@@ -11,14 +11,27 @@ postRouter.get('/posts', async (req, res) => {
   // #swagger.description = "게시글 조회 페이지"
   try {
     let {category, page} = req.query;
+    console.log(category, page)
     if(!page) page = 0;
     const scrollpage = parseInt(page);
+    const nextscroll = scrollpage +1;
+    let isnext = true;
     if (!category) {
       const posts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
-      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts })
+      const nextposts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
+      if(nextposts.length){
+        return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts ,isnext : true})
+      }
+      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts , isnext : false  })
+
     }
     const posts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
-    return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts });
+    const nextposts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
+    if(nextposts.length){
+      return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts, isnext: true });
+    }
+    return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts, isnext: false });
+
 
   } catch (error) {
     return res.status(500).send({ errorMeesage: error.message })
