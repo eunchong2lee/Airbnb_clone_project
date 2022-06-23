@@ -74,14 +74,13 @@ https://www.figma.com/file/wNnyH1PuZ3s1ePF9PtxHMP/Show-me-your-space-%ED%94%84%E
 # API 설계
 
 <img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175219735-3921a967-625d-495e-a909-fe9ebfd7ad80.png">
-<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175220072-784f4d21-6d4b-4327-8515-18e429a80d81.png'>
+<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175220072-784f4d21-6d4b-4327-8515-18e429a80d81.png">
 <img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175220152-12fac5ac-e1bd-42ec-a00b-3492b3c56dc1.png">
 
 
 # <img width=100px; alt="스웨거 로고" src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg"> swagger
-![스웨거1](https://user-images.githubusercontent.com/81402579/174002638-52cabd6b-de27-4062-9968-02a6086ba231.png)
-![스웨거2](https://user-images.githubusercontent.com/81402579/174002649-5135281e-c3f5-46df-9ab1-b09244c0358d.png)
-![스웨거3](https://user-images.githubusercontent.com/81402579/174002658-34329e29-660c-4c66-8d2a-f40d3a3b649f.png)
+
+![스웨거](https://user-images.githubusercontent.com/81402579/175220443-c0921409-7819-4d69-8f20-36353dd1d4f7.png)
 
 
 # Trouble Shooting
