@@ -19,11 +19,11 @@
   👉 https://github.com/vennydev/hanghae-clone
 
 😎 BACK-END(3명)
-  * 임정현 : 
+  * 임정현 : Post Api(Read), 유저간 실시간 채팅,
   
-  * 이은총 : 
+  * 이은총 : Auth Api, Airbnb 숙박업체 크롤링
    
-  * 이호욱 : 
+  * 이호욱 : Comment Api CRUD
 
 # 🔨 Tech Stack
 Back-end Tech Stack
