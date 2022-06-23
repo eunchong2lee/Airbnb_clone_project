@@ -68,7 +68,7 @@ https://www.figma.com/file/wNnyH1PuZ3s1ePF9PtxHMP/Show-me-your-space-%ED%94%84%E
 
 # ERD & Table 설계
 
-![erd_vo0 2]![clone_airbnb](https://user-images.githubusercontent.com/81402579/175218189-5431d204-c84c-4131-a2d6-41adeace779e.png)
+![clone_airbnb](https://user-images.githubusercontent.com/81402579/175218189-5431d204-c84c-4131-a2d6-41adeace779e.png)
 
 
 # API 설계
