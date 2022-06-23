@@ -65,14 +65,6 @@ https://www.notion.so/4-SA-10d2f2e0e96947a8b0eb8237690e0606#a83353ea63f242ff8814
 
 https://www.figma.com/file/wNnyH1PuZ3s1ePF9PtxHMP/Show-me-your-space-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-Flow
 
-<img width="1121" alt="와이어프레임1" src="https://user-images.githubusercontent.com/104499306/174006374-ec47e65c-3dd1-4c0c-9f78-08be1c19e2c2.png">
-<img width="1121" alt="와이어프레임2" src="https://user-images.githubusercontent.com/104499306/174006380-d2e27309-4c78-45fe-88a1-8d27ae9ea892.png">
-<img width="1121" alt="와이어프레임3" src="https://user-images.githubusercontent.com/104499306/174006387-33d473f8-4136-4c73-af0e-b2148f76b474.png">
-<img width="1121" alt="와이어프레임4" src="https://user-images.githubusercontent.com/104499306/174006396-8caf6805-dd21-41cf-97fc-6ff7b486b5b4.png">
-<img width="1121" alt="와이어프레임5" src="https://user-images.githubusercontent.com/104499306/174006403-3901cfb5-f9d0-4c4f-aefc-2a69b6c8c330.png">
-<img width="1121" alt="와이어프레임6" src="https://user-images.githubusercontent.com/104499306/174006409-afade9b1-6a89-48b6-8929-085256af8aa3.png">
-
-
 
 # ERD & Table 설계
 
