@@ -20,17 +20,17 @@ postRouter.get('/posts', async (req, res) => {
       const posts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
       const nextposts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
       if(nextposts.length){
-        return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts ,isnext : true})
+        return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.",isnext : true, posts })
       }
-      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts , isnext : false  })
+      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", isnext : false ,posts   })
 
     }
     const posts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
     const nextposts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
     if(nextposts.length){
-      return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts, isnext: true });
+      return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", isnext: true, posts });
     }
-    return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts, isnext: false });
+    return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", isnext: false , posts});
 
 
   } catch (error) {
