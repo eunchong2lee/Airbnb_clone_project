@@ -33,9 +33,6 @@ Back-end Tech Stack
 
 Back-end Library
   * bcrypt
-  * multer
-  * multer-s3-transform
-  * sharp
   * dotenv
   * cors
   * Json Web Token
@@ -43,6 +40,10 @@ Back-end Library
   * http-server
   * mongoose
   * mongoose-sequence
+  * socket.io
+  * pupeteer
+  * passport
+  * passport-local
 
 Develope Library
   * swagger-jsdoc
