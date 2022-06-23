@@ -73,10 +73,9 @@ https://www.figma.com/file/wNnyH1PuZ3s1ePF9PtxHMP/Show-me-your-space-%ED%94%84%E
 
 # API 설계
 
-<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/104499306/174013480-06b74e67-a8ec-42e9-bb68-4146e444e883.png">
-<img width="1472" alt="api설계2" src="https://user-images.githubusercontent.com/104499306/174013496-c251d82b-07fd-4c67-b835-b4b67f1a1d1f.png">
-<img width="1472" alt="api설계3" src="https://user-images.githubusercontent.com/104499306/174013515-10ef6257-5383-4119-8bba-ffe564fe16a1.png">
-
+<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175219735-3921a967-625d-495e-a909-fe9ebfd7ad80.png">
+<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175220072-784f4d21-6d4b-4327-8515-18e429a80d81.png'>
+<img width="1472" alt="api설계1" src="https://user-images.githubusercontent.com/81402579/175220152-12fac5ac-e1bd-42ec-a00b-3492b3c56dc1.png">
 
 
 # <img width=100px; alt="스웨거 로고" src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg"> swagger
