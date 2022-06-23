@@ -25,8 +25,6 @@
    
   * 이호욱 : Comment Api CRUD
 
-  👉 크롤링 깃허브 주소: https://github.com/eunchong2lee/Airbnb_clone_project_crawling
-
 # 🔨 Tech Stack
 Back-end Tech Stack
   * Javascript
@@ -88,16 +86,17 @@ https://www.figma.com/file/wNnyH1PuZ3s1ePF9PtxHMP/Show-me-your-space-%ED%94%84%E
 
 # Trouble Shooting
 
-문제 1: 
+문제 1: puppeteer을 이용한 크롤링 간 client 로딩 시간으로 인한 데이터 추출 불가능 에러
 -----------------------------------------------------------------------------------
 
-해결 : 
+해결 : client 로딩 시간을 3초로 했다가 7초로 변경 및 사이트 제일 하단 까지 auto scroll 동작
+      테스트 중인 기기의 사양이나 인터넷 속도, 웹서버의 속도 따라 경험적으로 테스트해야함.
 
 
-문제 2: 
+문제 2: puppeteer을 이용한 크롤링 간 detail 페이지 구조가 달라 element을 못 받아 오는 크롤링 에러
 -----------------------------------------------------------------------------------
 
-해결 : 
+해결 : 페이지 구조가 다른 부분의 element을 여러가지 조건문으로 처리하여 에러 해결
 
 
 문제 3: 
