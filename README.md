@@ -16,7 +16,7 @@
   
   * 홍종훈 : 
   
-  👉 
+  👉 https://github.com/vennydev/hanghae-clone
 
 😎 BACK-END(3명)
   * 임정현 : 
