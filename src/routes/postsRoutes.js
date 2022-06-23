@@ -10,12 +10,13 @@ postRouter.get('/posts', async (req, res) => {
   // #swagger.summary = "게시글 조회 페이지"
   // #swagger.description = "게시글 조회 페이지"
   try {
-    const category = req.query.category;
+    const {category, page} = req.query;
+    scrollpage = parseInt(page);
     if (!category) {
-      const posts = await Posts.find();
-      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts });
+      const posts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
+      return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", posts })
     }
-    const posts = await Posts.find({ category });
+    const posts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
     return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", posts });
 
   } catch (error) {
