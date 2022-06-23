@@ -17,8 +17,10 @@ postRouter.get('/posts', async (req, res) => {
     const nextscroll = scrollpage +1;
     let isnext = true;
     if (!category) {
-      const posts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
-      const nextposts = await Posts.find({category: '섬'}).skip(nextscroll*15).limit(15);
+      // const posts = await Posts.find({category: '섬'}).skip(scrollpage*15).limit(15);
+      // const nextposts = await Posts.find({category: '섬'}).skip(nextscroll*15).limit(15);
+      const posts = await Posts.find({category: '섬'}).limit(scrollpage*15);
+      const nextposts = await Posts.find({category: '섬'}).limit(nextscroll*15);
       console.log(nextposts.length);
       if(nextposts.length){
         return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.",isnext : true, posts })
@@ -26,8 +28,10 @@ postRouter.get('/posts', async (req, res) => {
       return res.status(200).json({ success: true, message: "게시글들을 불러왔습니다.", isnext : false ,posts   })
 
     }
-    const posts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
-    const nextposts = await Posts.find({ category }).skip(nextscroll*15).limit(15);
+    // const posts = await Posts.find({ category }).skip(scrollpage*15).limit(15);
+    // const nextposts = await Posts.find({ category }).skip(nextscroll*15).limit(15);
+    const posts = await Posts.find({ category }).limit(scrollpage*15);
+    const nextposts = await Posts.find({ category }).limit(nextscroll*15);
     if(nextposts.length){
       return res.status(200).json({ success: true, message: "카테고리에 게시글들을 불러왔습니다.", isnext: true, posts });
     }
