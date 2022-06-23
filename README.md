@@ -44,6 +44,9 @@ Back-end Library
   * pupeteer
   * passport
   * passport-local
+  * csv-parse
+  * csv-stringify
+  * stringify
 
 Develope Library
   * swagger-jsdoc
