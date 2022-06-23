@@ -16,7 +16,7 @@ commentRouter.get('/posts/:postId/comments', async (req, res)=> {
     try {
 
         const { postId } = req.params
-        const comments = await Comments.find({ postId }).sort({createdAt: -1})
+        const { comments } = await Comments.find({ postId }).sort({createdAt: -1})
 
         if (!comments) {return res.status(400).send({success: false, errorMeesage: "게시글에 댓글이 없습니다."})}
 
@@ -48,7 +48,7 @@ commentRouter.post('/posts/:postId/comments', authMiddleware, async (req, res)=>
 
         const createComment = await Comments.create({
             postId: Number(postId),
-            useremail: user.email,
+            useremail: user.useremail,
             nickname: user.nickname,
             comment: comment,
             date: date.split(' ')[0]
