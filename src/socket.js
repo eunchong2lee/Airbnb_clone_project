@@ -24,7 +24,7 @@ module.exports = (http) => {
                 
                 io.emit('chatting', data);
                 
-                const chat = new Chat({ nickname: data.nickname, chat: data.chat});
+                const chat = new Chat({ nickname: data.name, chat: data.message });
                 chat.save(function(err,data){
                     if (err){
                         console.log("error",err)
