@@ -2,10 +2,10 @@
 
 
 #  🌎 Web Site
-
+http://chodult.s3-website.ap-northeast-2.amazonaws.com/
 
 #  🎥 시연 영상
-
+https://youtu.be/DZ92PTaKyTw
 
 #  📆제작 기간
 2022-06-17(금) ~ 2022-06-23(목)
@@ -57,6 +57,9 @@ DBMS
 Deploy
   * AWS EC2 (Ubuntu 18.04LTS)
   * AWS S3
+
+crawling repository
+https://github.com/eunchong2lee/Airbnb_clone_project_crawling
 
 # S.A 및 팀 노션 페이지 
 
