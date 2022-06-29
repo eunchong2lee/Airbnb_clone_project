@@ -8,10 +8,8 @@ const chatSchema = new Schema({
         required: true,
     },
     chat: {
-      text: {
         type: String,
         required: true,
-      },
     },
 },
 {
