@@ -41,7 +41,7 @@ Back-end Library
   * mongoose
   * mongoose-sequence
   * socket.io
-  * pupeteer
+  * puppeteer
   * csv-parse
   * csv-stringify
   * stringify
